@@ -1,6 +1,6 @@
-require('dotenv').config();
-
-const { App } = require('@slack/bolt');
+import dotenv from 'dotenv';
+import { App } from '@slack/bolt';
+dotenv.config();
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -15,15 +15,15 @@ app.message('hello', ({message, say}) => {
         'type': 'section',
         'text': {
           'type': 'mrkdwn',
-          'text': `Hey there <@${message.user}>!`
+          'text': `Hey there <@${message.user}>!`,
         },
         'accessory': {
           'type': 'button',
           'text': {
             'type': 'plain_text',
-            'text': 'click me'
+            'text': 'click me',
           },
-          'action_id': 'button_click'
+          'action_id': 'button_click',
         }
       }
     ]
