@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "Slack Boltの試験場",
   "private": true,
-  "main": "app/app.js",
+  "main": "api/index.ts",
   "scripts": {
     "dev": "nodemon",
     "start": "pm2-runtime start pm2.json",
-    "lint": "eslint app/**/*.ts",
-    "lint:fix": "eslint --fix app/**/*.ts"
+    "lint": "eslint api/**/*.ts",
+    "lint:fix": "eslint --fix api/**/*.ts"
   },
   "author": "WhyK",
   "license": "MIT",
