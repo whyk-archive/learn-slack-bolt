@@ -23,13 +23,6 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@now/node@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@now/node/-/node-1.6.0.tgz#e662de9836d0db48dbb27a2fdb7bf26bbec4e1af"
-  integrity sha512-evU4QrZ3RYRNIQKJt8wrwoCHgnnZpRbTHNdmgmLs9eriOFejf3jIIEPxzkq0vFZ2wC2SP3W02WMl6SK6LZJuKQ==
-  dependencies:
-    "@types/node" "*"
-
 "@opencensus/core@0.0.9":
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/@opencensus/core/-/core-0.0.9.tgz#b16f775435ee309433e4126af194d37313fc93b3"
