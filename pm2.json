@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "learn-slack-bolt",
+      "script": "ts-node",
+      "args": "./app/index.ts"
+    }
+  ]
+}
