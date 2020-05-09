@@ -1,5 +1,5 @@
 {
   "version": 2,
   "builds": [{ "src": "app/**/*.ts", "use": "@now/node" }],
-  "routes": [{ "src": "(.*)", "dest": "app/index.ts" }]
+  "routes": [{ "src": "/", "methods": ["POST", "GET"], "dest": "app/index.ts" }]
 }
