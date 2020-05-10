@@ -14,5 +14,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "no-multi-spaces": 2,
+    "no-multiple-empty-lines": [2, {"max": 1}]
   }
 }
