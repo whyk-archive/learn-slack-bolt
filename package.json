@@ -12,6 +12,7 @@
   "author": "WhyK",
   "license": "MIT",
   "dependencies": {
+    "@now/node": "^1.6.0",
     "@slack/bolt": "^2.0.1",
     "dotenv": "^8.2.0",
     "pm2": "^4.4.0"
