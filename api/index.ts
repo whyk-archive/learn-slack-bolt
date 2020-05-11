@@ -51,6 +51,118 @@ export default () => {
     });
   });
 
+  app.shortcut('open_modal', async ({shortcut, ack, context}) => {
+    await ack();
+
+    await app.client.views.open({
+      token: context.botToken,
+      trigger_id: shortcut.trigger_id,
+      view: {
+        type: 'modal',
+        title: {
+          type: 'plain_text',
+          text: '投票作成',
+          emoji: true
+        },
+        submit: {
+          type: 'plain_text',
+          text: '作成',
+          emoji: true
+        },
+        close: {
+          type: 'plain_text',
+          text: 'キャンセル',
+          emoji: true
+        },
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'plain_text',
+              text: 'これは投票機能です',
+              emoji: true
+            }
+          },
+          {
+            type: 'divider'
+          },
+          {
+            type: 'input',
+            element: {
+              type: 'plain_text_input'
+            },
+            label: {
+              type: 'plain_text',
+              text: 'タイトル',
+              emoji: true
+            }
+          },
+          {
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: '説明',
+              emoji: true
+            },
+            element: {
+              type: 'plain_text_input',
+              multiline: true
+            }
+          },
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: '期限'
+            },
+            accessory: {
+              type: 'datepicker',
+              initial_date: '1990-04-28',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Select a date',
+                emoji: true
+              }
+            }
+          },
+          {
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: '選択肢1',
+              emoji: true
+            },
+            element: {
+              type: 'plain_text_input'
+            }
+          },
+          {
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: '選択肢2',
+              emoji: true
+            },
+            element: {
+              type: 'plain_text_input'
+            }
+          },
+          {
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: '選択肢3',
+              emoji: true
+            },
+            element: {
+              type: 'plain_text_input'
+            }
+          }
+        ]
+      }
+    });
+  });
+
   (async () => {
     await app.start(process.env.PORT || 3000);
 
