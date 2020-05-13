@@ -1,15 +1,18 @@
 import { App, ExpressReceiver } from '@slack/bolt';
 
 const receiver = new ExpressReceiver({
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  endpoints: '/slack/events'
+  signingSecret: process.env.SLACK_SIGNING_SECRET
 })
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   receiver,
-  processBeforeResponse: true
+  processBeforeResponse: true,
+  endpoints: {
+    events: '/slack/events',
+    commands: '/slack/commands'
+  }
 });
 
 export default app
