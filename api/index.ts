@@ -11,7 +11,8 @@ export default () => {
   const app = new App({
     token: process.env.SLACK_BOT_TOKEN,
     signingSecret: process.env.SLACK_SIGNING_SECRET,
-    receiver
+    receiver,
+    processBeforeResponse: true
   });
 
   app.message(':thinking_face:', async ({ message, say }) => {
@@ -59,6 +60,7 @@ export default () => {
       trigger_id: shortcut.trigger_id,
       view: {
         type: 'modal',
+        callback_id: 'vote_function',
         title: {
           type: 'plain_text',
           text: '投票作成',
@@ -88,8 +90,10 @@ export default () => {
           },
           {
             type: 'input',
+            block_id: 'title',
             element: {
-              type: 'plain_text_input'
+              type: 'plain_text_input',
+              action_id: 'input_title'
             },
             label: {
               type: 'plain_text',
@@ -99,6 +103,7 @@ export default () => {
           },
           {
             type: 'input',
+            block_id: 'description',
             label: {
               type: 'plain_text',
               text: '説明',
@@ -106,56 +111,80 @@ export default () => {
             },
             element: {
               type: 'plain_text_input',
+              action_id: 'input_description',
               multiline: true
             }
           },
           {
-            type: 'section',
-            text: {
-              type: 'mrkdwn',
-              text: '期限'
-            },
-            accessory: {
-              type: 'datepicker',
-              initial_date: '1990-04-28',
+            type: 'input',
+            block_id: 'conversations',
+            element: {
+              type: 'conversations_select',
+              action_id: 'input_conversations',
               placeholder: {
                 type: 'plain_text',
-                text: 'Select a date',
-                emoji: true
+                text: '投稿するチャンネルを選択する'
               }
+            },
+            label: {
+              type: 'plain_text',
+              text: 'チャンネル'
             }
           },
           {
             type: 'input',
+            block_id: 'period',
+            element: {
+              type: 'datepicker',
+              action_id: 'input_pariod',
+              placeholder: {
+                type: 'plain_text',
+                text: '期限日を選択する',
+                emoji: true
+              }
+            },
+            label: {
+              type: 'plain_text',
+              text: '期限'
+            }
+          },
+          {
+            type: 'input',
+            block_id: 'choices01',
             label: {
               type: 'plain_text',
               text: '選択肢1',
               emoji: true
             },
             element: {
-              type: 'plain_text_input'
+              type: 'plain_text_input',
+              action_id: 'input_choices01'
             }
           },
           {
             type: 'input',
+            block_id: 'choices02',
             label: {
               type: 'plain_text',
               text: '選択肢2',
               emoji: true
             },
             element: {
-              type: 'plain_text_input'
+              type: 'plain_text_input',
+              action_id: 'input_choices02'
             }
           },
           {
             type: 'input',
+            block_id: 'choices03',
             label: {
               type: 'plain_text',
               text: '選択肢3',
               emoji: true
             },
             element: {
-              type: 'plain_text_input'
+              type: 'plain_text_input',
+              action_id: 'input_choices03',
             }
           }
         ]
