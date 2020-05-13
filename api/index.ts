@@ -1,5 +1,5 @@
 import { App, ExpressReceiver } from '@slack/bolt';
-import { UsersInfo } from './types/interface';
+import { UsersInfo, VoteState } from './types/interface';
 import { titles } from './assets/json/movies.json'
 
 export default () => {
@@ -117,10 +117,10 @@ export default () => {
           },
           {
             type: 'input',
-            block_id: 'conversations',
+            block_id: 'conversation',
             element: {
               type: 'conversations_select',
-              action_id: 'input_conversations',
+              action_id: 'input_conversation',
               placeholder: {
                 type: 'plain_text',
                 text: '投稿するチャンネルを選択する'
@@ -133,10 +133,10 @@ export default () => {
           },
           {
             type: 'input',
-            block_id: 'period',
+            block_id: 'date',
             element: {
               type: 'datepicker',
-              action_id: 'input_pariod',
+              action_id: 'input_date',
               placeholder: {
                 type: 'plain_text',
                 text: '期限日を選択する',
@@ -189,6 +189,28 @@ export default () => {
           }
         ]
       }
+    });
+  });
+
+  app.view('vote_function', async ({ack, view, context}) => {
+    ack();
+
+    const voteState: VoteState = view.state.values;
+
+    console.log(voteState);
+
+    const selectState = (key: keyof VoteState): string => {
+      const value = ['conversation', 'date'].includes(key) ? `selected_${key}` : 'value'
+      return voteState[key][`input_${key}`][value]
+    };
+
+    const text: string = `投票を行います。\n\n議題：${selectState('title')}\n概略：${selectState('description')}\n期限：${selectState('date')}\n\n選択肢 :1: ${selectState('choices01')}\n選択肢 :2: ${selectState('choices02')}\n選択肢 :3: ${selectState('choices03')}`;
+
+    await app.client.chat.postMessage({
+      token: context.botToken,
+      channel: selectState('conversation'),
+      text,
+      mrkdwn: true,
     });
   });
 

@@ -39,3 +39,48 @@ export interface UsersInfo {
     has_2fa?: boolean;
   };
 }
+
+export interface VoteState {
+  title?: {
+    input_title?: {
+      type?: string,
+      value?: string
+    }
+  },
+  description?: {
+    input_description?: {
+      type?: string,
+      value?: string
+    }
+  },
+  conversation?: {
+    input_conversation?: {
+      type?: string,
+      selected_conversation?: string
+    }
+  },
+  date?: {
+    input_date?: {
+      type?: string,
+      selected_date?: string
+    }
+  },
+  choices01?: {
+    input_choices01?: {
+      type?: string,
+      value?: string
+    }
+  },
+  choices02?: {
+    input_choices02?: {
+      type?: string,
+      value?: string
+    }
+  },
+  choices03?: {
+    input_choices03?: {
+      type?: string,
+      value?: string
+    }
+  }
+}
