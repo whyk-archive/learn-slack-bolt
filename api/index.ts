@@ -1,12 +1,14 @@
 import { app } from './modules/initial';
 import messageBlock from './modules/function/message';
 import eventBlock from './modules/function/event';
+import commandBlock from './modules/function/command';
 import voteModal from './modules/function/voteModal';
 import cron from './modules/function/cron';
 
 export default () => {
   messageBlock();
   eventBlock();
+  commandBlock();
   voteModal();
   cron();
 
