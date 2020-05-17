@@ -1,4 +1,4 @@
-import app from '../initial';
+import { app } from '../initial';
 import { UsersInfo } from '../../types/interface';
 
 export default () => {

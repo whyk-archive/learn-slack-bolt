@@ -1,4 +1,4 @@
-import app from '../initial';
+import { app } from '../initial';
 import { VoteState } from '../../types/interface';
 
 export default () => {

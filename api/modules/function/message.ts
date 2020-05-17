@@ -1,4 +1,4 @@
-import app from '../initial';
+import { app } from '../initial';
 import { UsersInfo } from '../../types/interface';
 import { titles } from '../../assets/json/movies.json'
 

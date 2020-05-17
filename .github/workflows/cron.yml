@@ -1,0 +1,13 @@
+name: Cron Test
+
+# https://help.github.com/en/github/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule
+on:
+  schedule:
+    - cron:  '*/15 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cron test
+      run: curl -X POST -d {} ${{ secrets.CRON_URL }}
