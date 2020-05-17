@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: cron test
-      run: curl -X POST -d {} ${{ secrets.CRON_URL }}
+      run: curl ${{ secrets.CRON_URL }}
