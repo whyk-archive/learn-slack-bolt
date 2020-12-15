@@ -1,6 +1,6 @@
 import { app, receiver } from '../initial';
 
-export default () => {
+export default (): void => {
   receiver.app.get('/slack/cron', (req, res) => {
     res.sendStatus(200);
     app.client.chat.postMessage({

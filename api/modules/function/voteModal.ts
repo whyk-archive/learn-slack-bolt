@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { app } from '../initial';
 import { VoteState } from '../../types/interface';
 
-export default () => {
+export default (): void => {
   app.shortcut('open_modal', async ({shortcut, ack, context}) => {
     await ack();
 
@@ -154,7 +155,7 @@ export default () => {
       return voteState[key][`input_${key}`][value]
     };
 
-    const text: string = `投票を行います。\n\n議題：${selectState('title')}\n概略：${selectState('description')}\n期限：${selectState('date')}\n\n選択肢 :1: ${selectState('choices01')}\n選択肢 :2: ${selectState('choices02')}\n選択肢 :3: ${selectState('choices03')}`;
+    const text = `投票を行います。\n\n議題：${selectState('title')}\n概略：${selectState('description')}\n期限：${selectState('date')}\n\n選択肢 :1: ${selectState('choices01')}\n選択肢 :2: ${selectState('choices02')}\n選択肢 :3: ${selectState('choices03')}`;
 
     await app.client.chat.postMessage({
       token: context.botToken,

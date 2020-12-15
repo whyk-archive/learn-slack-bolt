@@ -2,7 +2,7 @@ import { app } from '../initial';
 import { UsersInfo } from '../../types/interface';
 import { titles } from '../../assets/json/movies.json'
 
-export default () => {
+export default (): void => {
   app.message(':thinking_face:', async ({ message, say }) => {
     await say(`Oops!! <@${message.user}>`);
   });
@@ -21,8 +21,10 @@ export default () => {
       token: context.botToken,
       user: message.user
     })
+    // eslint-disable-next-line @typescript-eslint/camelcase
     const {user: {real_name}}: UsersInfo = user
 
+    // eslint-disable-next-line @typescript-eslint/camelcase
     await say(`hello! Mr.${real_name}`)
   })
 }

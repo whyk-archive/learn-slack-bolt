@@ -5,7 +5,7 @@ import commandBlock from './modules/function/command';
 import voteModal from './modules/function/voteModal';
 import cron from './modules/function/cron';
 
-export default () => {
+export default (): void => {
   messageBlock();
   eventBlock();
   commandBlock();
@@ -16,7 +16,7 @@ export default () => {
     console.error(err);
   });
 
-  (async () => {
+  (async (): Promise<void> => {
     await app.start(process.env.PORT || 3000);
 
     console.log('⚡️ Bolt app is running!');
